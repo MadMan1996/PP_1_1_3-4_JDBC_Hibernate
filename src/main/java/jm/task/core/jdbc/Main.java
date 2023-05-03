@@ -9,12 +9,15 @@ import org.hibernate.Session;
 public class Main {
     public static void main(String[] args) throws Exception {
         UserService userService = new UserServiceImpl();
-        userService.dropUsersTable();
         userService.createUsersTable();
         userService.saveUser("Andrey", "Petrov", (byte) 45);
         userService.saveUser("Artem", "Ivanov", (byte) 4);
-        System.out.println(userService.getAllUsers());
-        userService.removeUserById(1);
+        userService.saveUser("Inokentiy", "Sidorov", (byte) 70);
+        userService.saveUser("Zaur", "Tregulov", (byte) 27);
+        for(User u : userService.getAllUsers()){
+            System.out.println(u);
+        };
         userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
